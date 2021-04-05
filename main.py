@@ -65,6 +65,7 @@ def getachievement():
         mess = "You didn't collect enough points for any achievement"
         change_mes()
 
+
 def getplus():
     global multiplier
     global mess
@@ -95,6 +96,7 @@ def autoclicker(): #purchase
     else:
         mess = "Autoclicker was already bought"
         change_mes()
+
 
 def autoclick():
     global mainapp
@@ -147,6 +149,3 @@ ach_message = Label(width=50, font=20, bg='grey', text="You can get achievements
 ach_message.pack()
 
 mainapp.mainloop()
-
-
-
