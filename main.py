@@ -8,32 +8,32 @@ class ClickCluckClowker:
     flagforsecond = True
     flagforthird = True
     flagforfourth = True
-
+    mess = "Hello!"
 
 
     def get_plus(self):
         if self.clicks >= 100:
             self.clicks -= 100
             self.multiplier += 1
-            mess = "Your multiplier have been updated"
-            self.change_mes(mess)
+            self.mess = "Your multiplier have been updated"
+            self.change_mes(self.mess)
         else:
-            mess = "Sorry, not enough points"
-            self.change_mes(mess)
+            self.mess = "Sorry, not enough points"
+            self.change_mes(self.mess)
 
     def autoclicker(self): #purchase
         if self.flagforauto == False:
             if self.clicks < 1500:
-                mess = "Sorry, not enough points, autoclicker did not activated"
-                self.change_mes(mess)
+                self.mess = "Sorry, not enough points, autoclicker did not activated"
+                self.change_mes(self.mess)
             else:
                 self.clicks -= 1500
                 flagforauto = True
-                mess = "Autoclicker purchased! Click 'AUTO ON' to activate it."
-                self.change_mes(mess)
+                self.mess = "Autoclicker purchased! Click 'AUTO ON' to activate it."
+                self.change_mes(self.mess)
         else:
-            mess = "Autoclicker was already bought"
-            self.change_mes(mess)
+            self.mess = "Autoclicker was already bought"
+            self.change_mes(self.mess)
 
 
     def autoclick(self):
@@ -49,37 +49,36 @@ class ClickCluckClowker:
         mainapp.resizable(width=False, height=False)
         frame = Frame(mainapp, bg='pink4')
         frame.place(relx=0.15, rely=0.15, relwidth=0.7, relheight=0.7)
-        click = Button(text='Click', width=7, height=3, font=20)
-        click.place(relx=0.522, rely=0.3)
-        click.config(command=self.change_cmd)
-        autoclickpur = Button(text='Buy Autoclicker (for 1500 clicks)', width=25, height=2, font=20)
-        autoclickpur.place(relx=0.15, rely=0.625)
-        autoclickpur.config(command=self.autoclicker)
+        self.click = Button(text='Click', width=7, height=3, font=20)
+        self.click.place(relx=0.522, rely=0.3)
+        self.click.config(command=self.change_cmd)
+        self.autoclickpur = Button(text='Buy Autoclicker (for 1500 clicks)', width=25, height=2, font=20)
+        self.autoclickpur.place(relx=0.15, rely=0.625)
+        self.autoclickpur.config(command=self.autoclicker)
 
-        auto = Button(text='AUTO ON', width=8, height=2, font=20)
-        auto.place(relx=0.68, rely=0.15)
-        auto.config(command=self.autoclick)
+        self.auto = Button(text='AUTO ON', width=8, height=2, font=20)
+        self.auto.place(relx=0.68, rely=0.15)
+        self.auto.config(command=self.autoclick)
 
-        achievement = Button(text='Get Achievements', width=25, height=2, font=20)
-        achievement.place(relx=0.15, rely=0.505)
-        achievement.config(command=self.get_achievement)
+        self.achievement = Button(text='Get Achievements', width=25, height=2, font=20)
+        self.achievement.place(relx=0.15, rely=0.505)
+        self.achievement.config(command=self.get_achievement)
 
-        mult = Button(text='Get +1 multiplier for each 100 clicks', width=30, height=2, font=20)
-        mult.place(relx=0.15, rely=0.725)
-        mult.config(command=self.get_plus)
+        self.mult = Button(text='Get +1 multiplier for each 100 clicks', width=30, height=2, font=20)
+        self.mult.place(relx=0.15, rely=0.725)
+        self.mult.config(command=self.get_plus)
 
-        showclicks = Label(text='Clicks counter:', bg='light goldenrod', font=20, width=20, height=2)
-        showclicks.place(relx=0.15, rely=0.33)
+        self.showclicks = Label(text='Clicks counter:', bg='light goldenrod', font=20, width=20, height=2)
+        self.showclicks.place(relx=0.15, rely=0.33)
 
-        ach_message = Label(width=50, font=20, bg='grey', text="You can get achievements for 100/400/1500/3000 points")
-        ach_message.pack()
+        self.ach_message = Label(width=50, font=20, bg='grey', text="You can get achievements for 100/400/1500/3000 points")
+        self.ach_message.pack()
 
-        message = Label(width=50, font=20, bg='grey', text="Hello!")
-        mess = Label(width=50, font=20, bg='grey', text="Hello!")
-        message.pack()
+        self.message = Label(width=50, font=20, bg='grey', text="Hello!")
+        self.message.pack()
 
     def change_mes(self, mess):
-        self.messagse.config(text=mess)
+        self.message.config(text=mess)
 
 
     def change_cmd(self):
@@ -88,41 +87,40 @@ class ClickCluckClowker:
 
     def get_achievement(self):
         if self.clicks >= 100 and self.flagforfirst == True:
-            mess = 'Achievement unlocked: Beginner. Bonus: +50 points'
-            self.change_mes(mess, message)
+            self.mess = 'Achievement unlocked: Beginner. Bonus: +50 points'
+            self.change_mes(self.mess)
             self.clicks += 50
             self.click['text'] = self.clicks
-            flagforfirst = False
+            self.flagforfirst = False
 
         elif self.clicks >= 400 and self.flagforsecond == True:
-            mess = 'Achievement unlocked: Advanced. Bonus: +100 points'
-            self.change_mes(mess)
+            self.mess = 'Achievement unlocked: Advanced. Bonus: +100 points'
+            self.change_mes(self.mess)
             self.clicks += 100
             self.click['text'] = self.clicks
-            flagforsecond = False
+            self.flagforsecond = False
 
         elif self.clicks >= 1500 and self.flagforthird == True:
-            mess = 'Achievement unlocked: Professional. Bonus: +200 points'
-            self.change_mes(mess)
+            self.mess = 'Achievement unlocked: Professional. Bonus: +200 points'
+            self.change_mes(self.mess)
             self.clicks += 200
             self.click['text'] = self.clicks
-            flagforthird = False
+            self.flagforthird = False
 
 
         elif self.clicks >= 3000 and self.flagforfourth == True:
-            mess = 'Achievement unlocked: Idler. Bonus points: +1'
-            self.change_mes(mess)
+            self.mess = 'Achievement unlocked: Idler. Bonus points: +1'
+            self.change_mes(self.mess)
             self.clicks = + 1
             self.click['text'] = self.clicks
-            flagforfourth = False
+            self.flagforfourth = False
 
         else:
-            mess = "You didn't collect enough points for any achievement"
-            self.change_mes(mess)
+            self.mess = "You didn't collect enough points for any achievement"
+            self.change_mes(self.mess)
 
 
 if __name__ == '__main__':
     mainapp = Tk()
     ClickCluckClowker = ClickCluckClowker(mainapp)
     mainapp.mainloop()
-
